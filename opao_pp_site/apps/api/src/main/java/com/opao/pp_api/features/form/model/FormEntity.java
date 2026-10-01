@@ -1,5 +1,5 @@
 
-package com.opao.pp_api.features.form;
+package com.opao.pp_api.features.form.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +20,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.opao.pp_api.common.constants.models.FormConstants;
+import com.opao.pp_api.features.form_status.model.FormStatusEntity;
+import com.opao.pp_api.features.form_type.model.FormTypeEntity;
+import com.opao.pp_api.features.noa_pp_lat5.model.NoaPpLat5Entity;
+import com.opao.pp_api.features.user.model.UserEntity;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;  
@@ -102,7 +106,7 @@ public class FormEntity implements Serializable{
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.FormEntity[ formId=" + formId + " ]";
+        return "com.opao.pp_api.features.form.model.FormEntity[ formId=" + formId + " ]";
     }   
     
 }

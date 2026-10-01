@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.form_status;
+package com.opao.pp_api.features.form_status.model;
 
 import java.io.Serializable;
 
@@ -70,6 +70,6 @@ public class FormStatusEntity implements Serializable {
     @Override
     public String toString()
     {
-        return "com.opao.pp_api.repositories.entities.FormStatusEntity[ statusId=" + statusId + " ]";
+        return "com.opao.pp_api.features.form_status.model.FormStatusEntity[ statusId=" + statusId + " ]";
     }
 }

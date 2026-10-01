@@ -1,5 +1,5 @@
 
-package com.opao.pp_api.features.noa_pp_lat5;
+package com.opao.pp_api.features.noa_pp_lat5.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,10 +11,11 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import com.opao.pp_api.features.business_type.BusinessTypeEntity;
-import com.opao.pp_api.features.form.FormEntity;
-import com.opao.pp_api.features.noa_pp_lat5_filing.NoaPpLat5FilingEntity;
-import com.opao.pp_api.features.noa_pp_lat5_inventories.NoaPpLat5InventoriesEntity;
+
+import com.opao.pp_api.features.business_type.model.BusinessTypeEntity;
+import com.opao.pp_api.features.form.model.FormEntity;
+import com.opao.pp_api.features.noa_pp_lat5_filing.model.NoaPpLat5FilingEntity;
+import com.opao.pp_api.features.noa_pp_lat5_inventories.model.NoaPpLat5InventoriesEntity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -156,7 +157,7 @@ public class NoaPpLat5Entity implements Serializable{
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.NoaPpLat5Entity[ noaPpLat5Id=" + noaPpLat5Id + " ]";
+        return "com.opao.pp_api.features.noa_pp_lat5.model.NoaPpLat5Entity[ noaPpLat5Id=" + noaPpLat5Id + " ]";
     }
     
 }

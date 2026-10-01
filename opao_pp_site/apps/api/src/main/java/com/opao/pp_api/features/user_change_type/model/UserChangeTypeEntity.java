@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.user_change_type;
+package com.opao.pp_api.features.user_change_type.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -61,7 +61,7 @@ public class UserChangeTypeEntity implements Serializable{
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.UserChangeTypeEntity[ userChangeTypeId=" + userChangeTypeId + " ]";
+        return "com.opao.pp_api.features.user_change_type.model.UserChangeTypeEntity[ userChangeTypeId=" + userChangeTypeId + " ]";
     }
     
 }

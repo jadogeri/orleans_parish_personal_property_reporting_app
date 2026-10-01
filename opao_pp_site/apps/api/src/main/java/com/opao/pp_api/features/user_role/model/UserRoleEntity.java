@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.user_role;
+package com.opao.pp_api.features.user_role.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -65,6 +65,6 @@ public class UserRoleEntity implements Serializable{
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.UserRoleEntity[ userRoleId=" + userRoleId + " ]";
+        return "com.opao.pp_api.features.user_role.model.UserRoleEntity[ userRoleId=" + userRoleId + " ]";
     }
 }

@@ -1,5 +1,5 @@
 
-package com.opao.pp_api.features.user_status;
+package com.opao.pp_api.features.user_status.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -64,7 +64,7 @@ public class UserStatusEntity implements Serializable{
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.UserStatusEntity[ userStatusId=" + userStatusId + " ]";
+        return "com.opao.pp_api.features.user_status.model.UserStatusEntity[ userStatusId=" + userStatusId + " ]";
     }
 
 }

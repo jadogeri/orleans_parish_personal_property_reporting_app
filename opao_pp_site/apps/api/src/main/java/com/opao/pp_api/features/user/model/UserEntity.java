@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.user;
+package com.opao.pp_api.features.user.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 import com.opao.pp_api.common.constants.models.UserConstants;
-import com.opao.pp_api.features.form.FormEntity;
-import com.opao.pp_api.features.user_role.UserRoleEntity;
-import com.opao.pp_api.features.user_status.UserStatusEntity;
+import com.opao.pp_api.features.form.model.FormEntity;
+import com.opao.pp_api.features.user_role.model.UserRoleEntity;
+import com.opao.pp_api.features.user_status.model.UserStatusEntity;
 
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -108,7 +108,7 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.UserEntity[ userId=" + userId + " ]";
+        return "com.opao.pp_api.features.user.model.UserEntity[ userId=" + userId + " ]";
     }
   
 }

@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.business_type;
+package com.opao.pp_api.features.business_type.model;
 
 import java.io.Serializable;
 
@@ -66,7 +66,7 @@ public class BusinessTypeEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.BusinessTypeEntity[ businessTypeId=" + businessTypeId + " ]";
+        return "com.opao.pp_api.features.business_type.model.BusinessTypeEntity[ businessTypeId=" + businessTypeId + " ]";
     }
     
 }

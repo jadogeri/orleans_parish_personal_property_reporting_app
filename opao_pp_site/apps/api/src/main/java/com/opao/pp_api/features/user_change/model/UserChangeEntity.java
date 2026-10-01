@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.user_change;
+package com.opao.pp_api.features.user_change.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -13,8 +13,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.opao.pp_api.common.constants.models.UserChangeConstants;
-import com.opao.pp_api.features.user.UserEntity;
-import com.opao.pp_api.features.user_change_type.UserChangeTypeEntity;
+import com.opao.pp_api.features.user.model.UserEntity;
+import com.opao.pp_api.features.user_change_type.model.UserChangeTypeEntity;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -83,7 +83,7 @@ public class UserChangeEntity implements Serializable{
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.repositories.entities.UserChangeEntity[ userChangeId=" + userChangeId + " ]";
+        return "com.opao.pp_api.features.user_change.model.UserChangeEntity[ userChangeId=" + userChangeId + " ]";
     }
     
     

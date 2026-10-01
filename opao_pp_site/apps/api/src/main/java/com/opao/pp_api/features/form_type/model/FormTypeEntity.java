@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.form_type;
+package com.opao.pp_api.features.form_type.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -65,6 +65,6 @@ public class FormTypeEntity implements Serializable {
     @Override
     public String toString()
     {
-        return "com.opao.pp_api.repositories.entities.FormTypeEntity[ formTypeId=" + formTypeId + " ]";
+        return "com.opao.pp_api.features.form_type.model.FormTypeEntity[ formTypeId=" + formTypeId + " ]";
     }
 }

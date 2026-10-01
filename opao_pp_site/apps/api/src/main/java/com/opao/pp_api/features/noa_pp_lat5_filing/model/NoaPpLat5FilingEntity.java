@@ -1,7 +1,8 @@
-package com.opao.pp_api.features.noa_pp_lat5_filing;
+package com.opao.pp_api.features.noa_pp_lat5_filing.model;
 
-import com.opao.pp_api.features.noa_pp_lat5.NoaPpLat5Entity;
-import com.opao.pp_api.features.property_asset.PropertyAssetEntity;
+import com.opao.pp_api.features.noa_pp_lat5.model.NoaPpLat5Entity;
+import com.opao.pp_api.features.property_asset.model.PropertyAssetEntity;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -132,7 +133,7 @@ public class NoaPpLat5FilingEntity implements Serializable{
     @Override
     public String toString()
     {
-        return "com.opao.pp_api.repositories.entities.NoaPpLat5FilingEntity[ noaPpLat5FilingId=" + noaPpLat5FilingId + " ]";
+        return "com.opao.pp_api.features.noa_pp_lat5_filing.model.NoaPpLat5FilingEntity[ noaPpLat5FilingId=" + noaPpLat5FilingId + " ]";
     }
     
 }   

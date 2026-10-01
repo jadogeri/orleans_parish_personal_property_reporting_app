@@ -1,5 +1,5 @@
  
-package com.opao.pp_api.features.property_asset;
+package com.opao.pp_api.features.property_asset.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -83,7 +83,7 @@ public class PropertyAssetEntity implements Serializable{
     @Override
     public String toString()
     {
-        return "com.opao.pp_api.repositories.entities.PropertyAssetEntity[ propertyAssetId=" + propertyAssetId + " ]";
+        return "com.opao.pp_api.features.property_asset.model.PropertyAssetEntity[ propertyAssetId=" + propertyAssetId + " ]";
     }
 
     

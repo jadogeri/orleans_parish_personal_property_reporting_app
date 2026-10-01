@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.noa_pp_lat5_inventories;
+package com.opao.pp_api.features.noa_pp_lat5_inventories.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -18,7 +18,7 @@ import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 
 import com.opao.pp_api.common.constants.models.NoaPpLat5InventoriesConstants;
-import com.opao.pp_api.features.noa_pp_lat5.NoaPpLat5Entity;
+import com.opao.pp_api.features.noa_pp_lat5.model.NoaPpLat5Entity;
 
 @Entity
 @Data // Generates Getters, Setters, toString, equals, and hashCode
@@ -101,7 +101,7 @@ public class NoaPpLat5InventoriesEntity implements Serializable{
     @Override
     public String toString()
     {
-        return "com.svlogic.opoppr.model.NoaPpLat5InventoriesEntity[ noaPpLat5InventoriesId=" + noaPpLat5InventoriesId + " ]";
+        return "com.opao.pp_api.features.noa_pp_lat5_inventories.model.NoaPpLat5InventoriesEntity[ noaPpLat5InventoriesId=" + noaPpLat5InventoriesId + " ]";
     }
     
 }
