@@ -13,7 +13,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import com.opao.pp_api.features.business_type.BusinessTypeEntity;
 import com.opao.pp_api.features.form.FormEntity;
-
+import com.opao.pp_api.features.noa_pp_lat5_filing.NoaPpLat5FilingEntity;
+import com.opao.pp_api.features.noa_pp_lat5_inventories.NoaPpLat5InventoriesEntity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
