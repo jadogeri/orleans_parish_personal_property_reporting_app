@@ -16,6 +16,10 @@ public class FormStatus {
     private Integer id;
     private String name;
 
+    public FormStatus(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public int hashCode()
     {

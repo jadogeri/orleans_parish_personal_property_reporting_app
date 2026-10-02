@@ -15,6 +15,9 @@ public class UserChangeType {
     private Integer id;
     private String name;
 
+    public UserChangeType(Integer id) {
+        this.id = id;
+    }
    
     @Override
     public int hashCode() {
