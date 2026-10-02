@@ -3,11 +3,13 @@ package com.opao.pp_api.features.business_type.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Builder
+@Getter 
+@Setter 
 @NoArgsConstructor
 @AllArgsConstructor
 public class BusinessType {
@@ -24,7 +26,6 @@ public class BusinessType {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof BusinessType)) {
             return false;
         }
