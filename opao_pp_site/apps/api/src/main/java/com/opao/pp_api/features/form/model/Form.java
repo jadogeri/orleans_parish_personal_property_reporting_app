@@ -1,5 +1,4 @@
-
-package com.opao.pp_api.features.business_type.model;
+package com.opao.pp_api.features.form.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,15 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
 @Builder
-@Getter 
-@Setter 
 @NoArgsConstructor
 @AllArgsConstructor
-public class BusinessType {
+public class Form {
     private Integer id;
-    private Integer code;
-    private String description;      
+    private String title;
+    private int filingYear;
+    private LocalDateTime lastModifiedDate; 
+    private String billNumber;
+    private String pin;    
+    private Integer formTypeId;
+    private String statusName;
+    private Integer userId;    
+    private boolean hasLineItems; 
 
     @Override
     public int hashCode() {
@@ -26,10 +34,10 @@ public class BusinessType {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof BusinessType)) {
+        if (!(object instanceof Form)) {
             return false;
         }
-        BusinessType other = (BusinessType) object;
+        Form other = (Form) object;
         if ((this.id == null && other.id != null)
                 || (this.id != null && !this.id.equals(other.id))) {
             return false;
@@ -39,6 +47,6 @@ public class BusinessType {
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.features.business_type.model.BusinessType[ id=" + id + " ]";
-    }
+        return "com.opao.pp_api.features.form.model.Form[ id=" + id + " ]";
+    }   
 }
