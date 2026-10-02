@@ -2,7 +2,7 @@ package com.opao.pp_api.features.form_status.model;
 
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.FormStatusConstants;
+import com.opao.pp_api.features.form_status.constants.FormStatusConstants;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.Basic;

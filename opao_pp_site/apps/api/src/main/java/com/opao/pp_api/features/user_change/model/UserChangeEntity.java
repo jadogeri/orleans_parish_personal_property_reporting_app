@@ -12,8 +12,8 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import com.opao.pp_api.common.constants.models.UserChangeConstants;
 import com.opao.pp_api.features.user.model.UserEntity;
+import com.opao.pp_api.features.user_change.constants.UserChangeConstants;
 import com.opao.pp_api.features.user_change_type.model.UserChangeTypeEntity;
 
 import jakarta.validation.constraints.NotNull;

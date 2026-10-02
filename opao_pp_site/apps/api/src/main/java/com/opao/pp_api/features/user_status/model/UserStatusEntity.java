@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.UserStatusConstants;
+import com.opao.pp_api.features.user_status.constants.UserStatusConstants;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -50,7 +50,6 @@ public class UserStatusEntity implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof UserStatusEntity)) {
             return false;
         }

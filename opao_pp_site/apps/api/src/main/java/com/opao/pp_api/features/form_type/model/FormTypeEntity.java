@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.FormTypeConstants;
+import com.opao.pp_api.features.form_type.constants.FormTypeConstants;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;

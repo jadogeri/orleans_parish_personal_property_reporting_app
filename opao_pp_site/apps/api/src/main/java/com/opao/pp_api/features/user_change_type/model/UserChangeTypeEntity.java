@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.UserChangeTypeConstants;
+import com.opao.pp_api.features.user_change_type.constants.UserChangeTypeConstants;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
