@@ -1,5 +1,4 @@
-
-package com.opao.pp_api.features.user_role.model;   
+package com.opao.pp_api.features.property_asset.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,28 +11,29 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRole {
+public class PropertyAsset {
     private Integer id;
-    private String name;
-    private String description;  
-
-    public UserRole(Integer id) {
-        this.id = id;
-    }
+    private int sectionNumber;
+    private String category;
+    private String propertyType; 
+    private String assetDescription;
+    private int effectiveLife;
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof UserRole)) {
+    public boolean equals(Object object)
+    {
+        if (!(object instanceof PropertyAsset)) {
             return false;
         }
-        UserRole other = (UserRole) object;
+        PropertyAsset other = (PropertyAsset) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -41,7 +41,8 @@ public class UserRole {
     }
 
     @Override
-    public String toString() {
-        return "com.opao.pp_api.features.user_role.model.UserRole[ id=" + id + " ]";
+    public String toString()
+    {
+        return "com.opao.pp_api.features.property_asset.model.PropertyAsset[ id=" + id + " ]";
     }
 }

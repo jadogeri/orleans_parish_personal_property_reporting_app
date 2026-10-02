@@ -4,7 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;import com.opao.pp_api.features.user_role.model.UserRole;
+import lombok.AllArgsConstructor;
+import com.opao.pp_api.features.user_role.model.UserRole;
 import com.opao.pp_api.features.user_status.model.UserStatus;
 
 
