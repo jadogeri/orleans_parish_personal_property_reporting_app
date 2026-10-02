@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.UserStatusConstants;
+import com.opao.pp_api.features.user_status.constants.UserStatusConstants;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
