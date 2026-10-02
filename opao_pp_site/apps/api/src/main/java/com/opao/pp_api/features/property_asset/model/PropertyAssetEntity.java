@@ -85,6 +85,5 @@ public class PropertyAssetEntity implements Serializable{
     {
         return "com.opao.pp_api.features.property_asset.model.PropertyAssetEntity[ propertyAssetId=" + propertyAssetId + " ]";
     }
-
     
 }

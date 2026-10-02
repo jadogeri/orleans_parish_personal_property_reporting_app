@@ -61,7 +61,7 @@ public class UserChangeEntity implements Serializable{
         this.initiatedTime = initiatedTime;
     }
 
-        @Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (userChangeId != null ? userChangeId.hashCode() : 0);
