@@ -45,7 +45,7 @@ public class FormStatusEntity implements Serializable {
         this.statusId = statusId;
     }
 
-        @Override
+    @Override
     public int hashCode()
     {
         int hash = 0;

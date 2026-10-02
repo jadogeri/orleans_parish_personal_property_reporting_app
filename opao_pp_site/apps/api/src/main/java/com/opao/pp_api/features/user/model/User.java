@@ -4,11 +4,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
-
-import com.opao.pp_api.features.user_role.model.UserRole;
+import lombok.AllArgsConstructor;import com.opao.pp_api.features.user_role.model.UserRole;
 import com.opao.pp_api.features.user_status.model.UserStatus;
 
-import lombok.AllArgsConstructor;
+
 
 @Getter
 @Setter
@@ -25,11 +24,11 @@ public class User {
     private String hashedPassword;
     private boolean isActive;
     
-    // FIXED: Added missing relation destination slots for MapStruct flattening
+    // Added missing relation destination slots for MapStruct flattening
     private UserRole userRoleId;   
     private UserStatus userStatusId; 
 
-        @Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
