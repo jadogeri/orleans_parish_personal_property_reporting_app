@@ -1,4 +1,5 @@
-package com.opao.pp_api.features.user_status.model;
+
+package com.opao.pp_api.features.user_role.model;   
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +12,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserStatus {
+public class UserRole {
     private Integer id;
     private String name;
+    private String description;  
 
-    @Override
+    public UserRole(Integer id) {
+        this.id = id;
+    }
+
+        @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
@@ -24,12 +30,11 @@ public class UserStatus {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof UserStatus)) {
+        if (!(object instanceof UserRole)) {
             return false;
         }
-        UserStatus other = (UserStatus) object;
-        if ((this.id == null && other.id != null)
-                || (this.id != null && !this.id.equals(other.id))) {
+        UserRole other = (UserRole) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -37,6 +42,6 @@ public class UserStatus {
 
     @Override
     public String toString() {
-        return "com.opao.pp_api.features.user_status.model.UserStatus[ id=" + id + " ]";
+        return "com.opao.pp_api.features.user_role.model.UserRole[ id=" + id + " ]";
     }
 }
