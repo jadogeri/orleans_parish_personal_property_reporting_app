@@ -2,7 +2,7 @@ package com.opao.pp_api.features.business_type.model;
 
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.BusinessTypeConstants;
+import com.opao.pp_api.features.business_type.constants.BusinessTypeConstants;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;

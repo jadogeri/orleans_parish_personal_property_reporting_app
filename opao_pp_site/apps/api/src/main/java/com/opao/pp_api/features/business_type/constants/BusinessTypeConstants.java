@@ -1,4 +1,4 @@
-package com.opao.pp_api.common.constants.models;
+package com.opao.pp_api.features.business_type.constants;
 
 
 public final class BusinessTypeConstants {

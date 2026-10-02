@@ -1,11 +1,12 @@
 package com.opao.pp_api.features.business_type.validation;
 
-import com.opao.pp_api.common.constants.models.BusinessTypeConstants;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.lang.annotation.*;
+
+import com.opao.pp_api.features.business_type.constants.BusinessTypeConstants;
 
 @Documented
 @Constraint(validatedBy = {})
