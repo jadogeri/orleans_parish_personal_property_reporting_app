@@ -1,4 +1,4 @@
-package com.opao.pp_api.common.constants.collections;
+package com.opao.pp_api.features.user_role.constants;
 
 import com.opao.pp_api.features.user_role.model.UserRole;
 import java.util.List;

@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.UserRoleConstants;
+import com.opao.pp_api.features.user_role.constants.UserRoleConstants;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
