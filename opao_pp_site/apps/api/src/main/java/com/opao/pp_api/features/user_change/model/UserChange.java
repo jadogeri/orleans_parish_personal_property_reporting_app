@@ -21,6 +21,10 @@ public class UserChange {
     private Integer userChangeTypeId;
     private Integer userId;
 
+    public UserChange(Integer id) {
+        this.id = id    ;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
