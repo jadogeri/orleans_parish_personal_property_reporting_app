@@ -1,7 +1,8 @@
 package com.opao.pp_api.features.property_asset.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,24 +19,29 @@ import com.opao.pp_api.features.property_asset.constants.PropertyAssetConstants;
 @AllArgsConstructor
 public class PropertyAssetCreateRequest {
 
+    @JsonProperty("sectionNumber")
     @NotNull(message = "Section number is required")
     private Integer sectionNumber;
 
+    @JsonProperty("category")
     @NotBlank(message = "Category cannot be blank")
     @Size(min = PropertyAssetConstants.CATEGORY_MIN_LENGTH, max = PropertyAssetConstants.CATEGORY_MAX_LENGTH,
           message = "Category length must be between {min} and {max} characters")
     private String category;
 
+    @JsonProperty("propertyType")
     @NotBlank(message = "Property type cannot be blank")
     @Size(min = PropertyAssetConstants.PPTYPE_MIN_LENGTH, max = PropertyAssetConstants.PPTYPE_MAX_LENGTH,
           message = "Property type length must be between {min} and {max} characters")
     private String propertyType; 
 
+    @JsonProperty("assetDescription")
     @NotBlank(message = "Asset description cannot be blank")
     @Size(min = PropertyAssetConstants.ASSET_DESCRIPTION_MIN_LENGTH, max = PropertyAssetConstants.ASSET_DESCRIPTION_MAX_LENGTH,
           message = "Asset description length must be between {min} and {max} characters")
     private String assetDescription;
 
+    @JsonProperty("effectiveLife")
     @NotNull(message = "Effective life is required")
     private Integer effectiveLife;
 }
