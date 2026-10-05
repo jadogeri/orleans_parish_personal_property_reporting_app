@@ -1,10 +1,19 @@
-package com.opao.pp_api.common.constants.models;
+package com.opao.pp_api.common.constants;
 
+public class ValidationRangeConstants {
+    
+    public static final int JURISDICTION_MIN_LENGTH = 1;
+    public static final int JURISDICTION_MAX_LENGTH = 6; 
 
-public final class UserConstants {
-    private UserConstants() {} // Prevent instantiation
+    public static final int PARCEL_ADDRESS_MIN_LENGTH = 1;
+    public static final int PARCEL_ADDRESS_MAX_LENGTH = 30;
 
-    // Centralized source of truth for lengths
+    public static final int FILE_YEAR_MIN_LENGTH = 4;
+    public static final int FILE_YEAR_MAX_LENGTH = 4;
+    
+    public static final int TAX_YEAR_MIN_LENGTH = 4;
+    public static final int TAX_YEAR_MAX_LENGTH = 4;
+    
     public static final int USERNAME_MIN_LENGTH = 1;
     public static final int USERNAME_MAX_LENGTH = 75;
     
@@ -19,6 +28,5 @@ public final class UserConstants {
 
     public static final int PHONE_NUMBER_MIN_LENGTH = 1;
     public static final int PHONE_NUMBER_MAX_LENGTH = 10;
-
 
 }

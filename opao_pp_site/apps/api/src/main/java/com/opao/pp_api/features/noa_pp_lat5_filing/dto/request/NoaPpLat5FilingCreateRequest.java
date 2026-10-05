@@ -14,6 +14,7 @@ import com.opao.pp_api.features.noa_pp_lat5_filing.validation.ValidAcquisitionYe
 import com.opao.pp_api.common.validation.ValidJurisdiction;
 import com.opao.pp_api.common.validation.ValidParcelAddress;
 import com.opao.pp_api.common.validation.ValidPhoneNumber;
+import com.opao.pp_api.common.validation.ValidForeignId;
 
 @Getter
 @Setter
@@ -68,6 +69,7 @@ public class NoaPpLat5FilingCreateRequest {
     @ValidPhoneNumber
     private String consignerTelNo;
     
+    @ValidForeignId
     @NotNull(message = "Linked NoaPpLat5 ID reference is required")
     private Integer noaPpLat5Id;        
 }

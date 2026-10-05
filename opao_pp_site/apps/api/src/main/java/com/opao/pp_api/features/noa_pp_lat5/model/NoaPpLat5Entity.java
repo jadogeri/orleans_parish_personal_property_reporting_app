@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
-import com.opao.pp_api.common.constants.models.NoaPpLat5Constants;
+import com.opao.pp_api.common.constants.ValidationRangeConstants;
 import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 
 import com.opao.pp_api.features.business_type.model.BusinessTypeEntity;
 import com.opao.pp_api.features.form.model.FormEntity;
+import com.opao.pp_api.features.noa_pp_lat5.constants.NoaPpLat5Constants;
 import com.opao.pp_api.features.noa_pp_lat5_filing.model.NoaPpLat5FilingEntity;
 import com.opao.pp_api.features.noa_pp_lat5_inventories.model.NoaPpLat5InventoriesEntity;
 
@@ -44,12 +45,12 @@ public class NoaPpLat5Entity implements Serializable{
     private Integer noaPpLat5Id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = NoaPpLat5Constants.JUR_MIN_LENGTH, max = NoaPpLat5Constants.JUR_MAX_LENGTH)
+    @Size(min = ValidationRangeConstants.JURISDICTION_MIN_LENGTH, max = ValidationRangeConstants.JURISDICTION_MAX_LENGTH)
     @Column(name = "JUR")
     private String jur;
     @Basic(optional = false)
     @NotNull
-    @Size(min = NoaPpLat5Constants.PARID_MIN_LENGTH, max = NoaPpLat5Constants.PARID_MAX_LENGTH)
+    @Size(min = ValidationRangeConstants.PARCEL_ADDRESS_MIN_LENGTH, max = ValidationRangeConstants.PARCEL_ADDRESS_MAX_LENGTH)
     @Column(name = "PARID")
     private String parid;
     @Size(max = NoaPpLat5Constants.ALTID_MAX_LENGTH)
@@ -143,7 +144,6 @@ public class NoaPpLat5Entity implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof NoaPpLat5Entity)) {
             return false;
         }

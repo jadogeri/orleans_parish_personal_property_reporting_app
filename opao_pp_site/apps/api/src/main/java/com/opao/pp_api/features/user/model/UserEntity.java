@@ -6,8 +6,7 @@ import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
-
-import com.opao.pp_api.common.constants.models.UserConstants;
+import com.opao.pp_api.features.user.constants.UserConstants;
 import com.opao.pp_api.features.form.model.FormEntity;
 import com.opao.pp_api.features.user_role.model.UserRoleEntity;
 import com.opao.pp_api.features.user_status.model.UserStatusEntity;

@@ -13,7 +13,7 @@ import com.opao.pp_api.common.constants.ValidationRegexConstants;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @NotBlank(message = "Parcel ID cannot be blank")
-@Pattern(regexp = ValidationRegexConstants.PARCEL_ID_REGEX, message = "Parcel ID format is invalid (Max 30 alphanumeric/hyphen characters)")
+@Pattern(regexp = ValidationRegexConstants.PARCEL_ADDRESS_REGEX, message = "Parcel ID format is invalid (Max 30 alphanumeric/hyphen characters)")
 public @interface ValidParcelAddress {
     String message() default "Invalid parcel ID";
     Class<?>[] groups() default {};
@@ -23,7 +23,7 @@ public @interface ValidParcelAddress {
     @Constraint(validatedBy = {})
     @Target({ElementType.FIELD, ElementType.PARAMETER})
     @Retention(RetentionPolicy.RUNTIME)
-    @Pattern(regexp = ValidationRegexConstants.PARCEL_ID_REGEX, message = "Parcel ID format is invalid (Max 30 alphanumeric/hyphen characters)")
+    @Pattern(regexp = ValidationRegexConstants.PARCEL_ADDRESS_REGEX, message = "Parcel ID format is invalid (Max 30 alphanumeric/hyphen characters)")
     @interface Optional {
         String message() default "Invalid parcel ID";
         Class<?>[] groups() default {};

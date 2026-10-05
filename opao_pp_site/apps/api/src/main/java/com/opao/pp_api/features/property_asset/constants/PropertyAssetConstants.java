@@ -1,4 +1,4 @@
-package com.opao.pp_api.common.constants.models;
+package com.opao.pp_api.features.property_asset.constants;
 
 public final class PropertyAssetConstants {
         private PropertyAssetConstants() {} // Prevent instantiation

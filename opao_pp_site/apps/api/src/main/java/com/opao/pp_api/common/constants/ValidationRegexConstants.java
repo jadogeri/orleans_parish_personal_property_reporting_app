@@ -1,4 +1,5 @@
 package com.opao.pp_api.common.constants;
+import com.opao.pp_api.common.constants.ValidationRangeConstants;
 
 public final class ValidationRegexConstants {
     private ValidationRegexConstants() {} // Prevent instantiation
@@ -11,9 +12,11 @@ public final class ValidationRegexConstants {
     
     public static final String PHONE_NUMBER_REGEX = "^\\d{10}$";
     
-    public static final String USERNAME_REGEX = "^[A-Za-z][A-Za-z0-9_]{4,24}$";
+    public static final String USERNAME_REGEX = "^[A-Za-z][A-Za-z0-9_]{,24}$";
 
-    public static final String JUR_REGEX = "^[A-Za-z0-9]{1,6}$";
-    
-    public static final String PARCEL_ID_REGEX = "^[A-Za-z0-9\\-_]{1,30}$";
+    public static final String JURISDICTION_REGEX = "^[A-Za-z0-9]{" + ValidationRangeConstants.JURISDICTION_MIN_LENGTH + "," + ValidationRangeConstants.JURISDICTION_MAX_LENGTH + "}$";
+
+    public static final String PARCEL_ADDRESS_REGEX = "^[A-Za-z0-9\\-_]{" + ValidationRangeConstants.PARCEL_ADDRESS_MIN_LENGTH + "," + ValidationRangeConstants.PARCEL_ADDRESS_MAX_LENGTH + "}$";
+
+
 }

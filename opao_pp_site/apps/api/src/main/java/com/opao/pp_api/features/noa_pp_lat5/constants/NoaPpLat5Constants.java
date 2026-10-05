@@ -1,14 +1,11 @@
-package com.opao.pp_api.common.constants.models;
+package com.opao.pp_api.features.noa_pp_lat5.constants;
 
 
 public final class NoaPpLat5Constants {
     private NoaPpLat5Constants() {} // Prevent instantiation
 
     // Centralized source of truth for lengths
-    public static final int JUR_MIN_LENGTH = 1;
-    public static final int JUR_MAX_LENGTH = 6; 
-    public static final int PARID_MIN_LENGTH = 1;
-    public static final int PARID_MAX_LENGTH = 30;
+
     public static final int ALTID_MAX_LENGTH = 30;
     public static final int OWNERNAME_MAX_LENGTH = 40;
     public static final int ADDR1_MAX_LENGTH = 80;
