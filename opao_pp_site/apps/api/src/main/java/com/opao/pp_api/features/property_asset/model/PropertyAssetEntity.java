@@ -15,7 +15,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.PropertyAssetConstants;
+import com.opao.pp_api.features.property_asset.constants.PropertyAssetConstants;
 
 @Entity
 @Data // Generates Getters, Setters, toString, equals, and hashCode

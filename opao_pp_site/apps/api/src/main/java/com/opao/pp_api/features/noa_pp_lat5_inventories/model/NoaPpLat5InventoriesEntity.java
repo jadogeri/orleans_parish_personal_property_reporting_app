@@ -17,8 +17,9 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 
-import com.opao.pp_api.common.constants.models.NoaPpLat5InventoriesConstants;
+import com.opao.pp_api.common.constants.ValidationRangeConstants;
 import com.opao.pp_api.features.noa_pp_lat5.model.NoaPpLat5Entity;
+import com.opao.pp_api.features.noa_pp_lat5_inventories.constants.NoaPpLat5InventoriesConstants;
 
 @Entity
 @Data // Generates Getters, Setters, toString, equals, and hashCode
@@ -34,22 +35,22 @@ public class NoaPpLat5InventoriesEntity implements Serializable{
     private Integer noaPpLat5InventoriesId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = NoaPpLat5InventoriesConstants.JUR_MIN_LENGTH, max = NoaPpLat5InventoriesConstants.JUR_MAX_LENGTH)
+    @Size(min = ValidationRangeConstants.JURISDICTION_MIN_LENGTH, max = ValidationRangeConstants.JURISDICTION_MAX_LENGTH)
     @Column(name = "JUR")
     private String jur;
     @Basic(optional = false)
     @NotNull
-    @Size(min = NoaPpLat5InventoriesConstants.PARID_MIN_LENGTH, max = NoaPpLat5InventoriesConstants.PARID_MAX_LENGTH)
+    @Size(min = ValidationRangeConstants.PARCEL_ADDRESS_MIN_LENGTH, max = ValidationRangeConstants.PARCEL_ADDRESS_MAX_LENGTH)
     @Column(name = "PARID")
     private String parid;
     @Basic(optional = false)
     @NotNull
-    @Size(min = NoaPpLat5InventoriesConstants.TAXYR_MIN_LENGTH, max = NoaPpLat5InventoriesConstants.TAXYR_MAX_LENGTH)
+    @Size(min = ValidationRangeConstants.TAX_YEAR_MIN_LENGTH, max = ValidationRangeConstants.TAX_YEAR_MAX_LENGTH)
     @Column(name = "TAXYR")
     private int taxyr;
     @Basic(optional = false)
     @NotNull
-    @Size(min = NoaPpLat5InventoriesConstants.FILEYR_MIN_LENGTH, max = NoaPpLat5InventoriesConstants.FILEYR_MAX_LENGTH)
+    @Size(min = ValidationRangeConstants.FILE_YEAR_MIN_LENGTH, max = ValidationRangeConstants.FILE_YEAR_MAX_LENGTH)
     @Column(name = "FILEYR")
     private int fileyr;
     @Size(max = NoaPpLat5InventoriesConstants.INVENTORY_TYPE_MAX_LENGTH)

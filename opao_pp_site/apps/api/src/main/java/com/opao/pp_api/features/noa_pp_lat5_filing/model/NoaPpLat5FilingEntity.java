@@ -1,6 +1,7 @@
 package com.opao.pp_api.features.noa_pp_lat5_filing.model;
 
 import com.opao.pp_api.features.noa_pp_lat5.model.NoaPpLat5Entity;
+import com.opao.pp_api.features.noa_pp_lat5_filing.dto.constants.NoaPpLat5FilingConstants;
 import com.opao.pp_api.features.property_asset.model.PropertyAssetEntity;
 
 import jakarta.validation.constraints.NotNull;
@@ -8,8 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.io.Serializable;
-
-import com.opao.pp_api.common.constants.models.NoaPpLat5FilingConstants;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
