@@ -1,4 +1,4 @@
-package com.opao.pp_api.common.constants.models;
+package com.opao.pp_api.features.noa_pp_lat5_filing.dto.constants;
 
 
 public final class NoaPpLat5FilingConstants {
@@ -21,5 +21,6 @@ public final class NoaPpLat5FilingConstants {
     public static final int COSIGNER_MAILING_ADDR_MAX_LENGTH = 50;
     public static final int ITEM_DESCRIPTION_MAX_LENGTH = 50;
     public static final int COSIGNER_TEL_NO_MAX_LENGTH = 10;
+    public static final int MIN_YEAR_OF_ACQUISITION = 1920;
 
 }
