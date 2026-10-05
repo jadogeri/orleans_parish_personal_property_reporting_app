@@ -1,4 +1,4 @@
-package com.opao.pp_api.common.constants.models;
+package com.opao.pp_api.features.form.constants;
 
 
 public final class FormConstants {

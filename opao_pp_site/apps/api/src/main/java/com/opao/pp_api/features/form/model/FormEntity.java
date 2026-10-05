@@ -19,7 +19,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.opao.pp_api.common.constants.models.FormConstants;
+import com.opao.pp_api.features.form.constants.FormConstants;
 import com.opao.pp_api.features.form_status.model.FormStatusEntity;
 import com.opao.pp_api.features.form_type.model.FormTypeEntity;
 import com.opao.pp_api.features.noa_pp_lat5.model.NoaPpLat5Entity;
@@ -92,7 +92,6 @@ public class FormEntity implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof FormEntity)) {
             return false;
         }
