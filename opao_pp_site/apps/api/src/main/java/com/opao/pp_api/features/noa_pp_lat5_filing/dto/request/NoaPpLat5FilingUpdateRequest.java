@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.opao.pp_api.features.noa_pp_lat5_filing.dto.constants.NoaPpLat5FilingConstants;
+import com.opao.pp_api.features.noa_pp_lat5_filing.constants.NoaPpLat5FilingConstants;
 import com.opao.pp_api.features.noa_pp_lat5_filing.validation.ValidAcquisitionYear;
 import com.opao.pp_api.common.validation.ValidForeignId;
 import com.opao.pp_api.common.validation.ValidJurisdiction;

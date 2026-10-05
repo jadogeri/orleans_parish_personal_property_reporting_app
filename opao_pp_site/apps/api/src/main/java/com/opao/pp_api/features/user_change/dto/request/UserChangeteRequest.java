@@ -2,15 +2,19 @@ package com.opao.pp_api.features.user_change.dto.request;
 
 import com.opao.pp_api.features.user_change.validation.ValidVerificationCode;
 import com.opao.pp_api.common.validation.ValidForeignId;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record UserChangeUpdateRequest(
+public record UserChangeteRequest(
     
-    @ValidVerificationCode.Optional 
+    @JsonProperty("verificationCode")
+    @ValidVerificationCode 
     String verificationCode,
 
-    @ValidForeignId.Optional 
+    @JsonProperty("userChangeTypeId")
+    @ValidForeignId 
     Integer userChangeTypeId,
 
-    @ValidForeignId.Optional 
+    @JsonProperty("userId")
+    @ValidForeignId 
     Integer userId
 ) {}

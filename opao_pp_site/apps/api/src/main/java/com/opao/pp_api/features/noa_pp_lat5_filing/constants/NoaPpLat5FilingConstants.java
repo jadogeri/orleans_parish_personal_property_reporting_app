@@ -1,4 +1,4 @@
-package com.opao.pp_api.features.noa_pp_lat5_filing.dto.constants;
+package com.opao.pp_api.features.noa_pp_lat5_filing.constants;
 
 
 public final class NoaPpLat5FilingConstants {
