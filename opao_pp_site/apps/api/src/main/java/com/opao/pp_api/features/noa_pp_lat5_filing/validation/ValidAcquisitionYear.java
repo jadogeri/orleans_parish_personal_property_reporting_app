@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Min;
 import java.lang.annotation.*;
 
-import com.opao.pp_api.features.noa_pp_lat5_filing.dto.constants.NoaPpLat5FilingConstants;
+import com.opao.pp_api.features.noa_pp_lat5_filing.constants.NoaPpLat5FilingConstants;
 
 @Documented
 @Constraint(validatedBy = {})
