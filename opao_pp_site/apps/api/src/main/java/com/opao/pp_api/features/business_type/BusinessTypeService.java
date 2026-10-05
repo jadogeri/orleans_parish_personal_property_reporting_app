@@ -1,3 +1,4 @@
+package com.opao.pp_api.features.business_type;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
