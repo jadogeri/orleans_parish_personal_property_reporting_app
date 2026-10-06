@@ -27,19 +27,25 @@
             <maxFileSize>10MB</maxFileSize>
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
-
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>WARN</level>
-        </filter>
     </appender>
 
-    <!-- 💡 3. THE FIX: SILENCE SPRING'S DUPLICATE EXCEPTION RESOLVER LOGS COMPLETELY -->
-    <!-- This stops the duplicate line that lacks a trackingId or tier property -->
-    <logger name="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" level="OFF" />
-
-    <!-- 4. ROOT LEVEL ROUTING LAYERS -->
-    <root level="INFO">
+    <!-- 💡 3. FORCE YOUR CUSTOM EXCEPTIONS TIERS DIRECTLY TO BOTH STREAM OUTPUTS -->
+    <!-- This guarantees your business errors write to the JSON file no matter what framework alerts occur -->
+    <logger name="com.opao.pp_api.common.exceptions" level="WARN" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="SECURE_JSON_FILE" />
+    </logger>
+
+    <!-- 💡 4. THE FILTER: Routes framework alerts to console, but blocks them from the root file -->
+    <logger name="org.springframework" level="WARN" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <logger name="org.springdoc" level="WARN" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <!-- 5. ROOT ROUTING SCHEMAS -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
     </root>
 </configuration>

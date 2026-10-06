@@ -1,5 +1,6 @@
 package com.opao.pp_api.features.business_type;
 
+import com.opao.pp_api.common.exceptions.ResourceNotFoundException;
 import com.opao.pp_api.features.business_type.dto.request.BusinessTypeCreateRequest;
 import com.opao.pp_api.features.business_type.dto.request.BusinessTypeUpdateRequest;
 import com.opao.pp_api.features.business_type.dto.response.BusinessTypeResponse;
@@ -44,7 +45,7 @@ public class BusinessTypeController {
         return ResponseEntity.ok(responses);
     }
 
-    /**
+     /**
      * GET /api/v1/business-types/{id}
      * Retrieves a specific business type by its identifier.
      */
@@ -53,7 +54,8 @@ public class BusinessTypeController {
         return businessTypeService.getBusinessTypeById(id)
                 .map(dtoMapper::toResponse)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                // 💡 FIX: Throw the exception so the GlobalExceptionHandler catches it!
+                .orElseThrow(() -> new ResourceNotFoundException("Business type record with ID " + id + " does not exist."));
     }
 
     /**

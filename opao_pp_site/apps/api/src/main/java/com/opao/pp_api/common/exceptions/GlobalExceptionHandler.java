@@ -3,7 +3,7 @@ package com.opao.pp_api.common.exceptions;
 /**
  * @author Joseph Adogeri
  * @since 06-OCT-2026
- * @version 1.0.5
+ * @version 1.0.6
  */
 
 import io.swagger.v3.oas.annotations.Hidden;
@@ -95,7 +95,6 @@ public class GlobalExceptionHandler {
                         (existing, replacement) -> existing
                 ));
 
-        // 💡 Pass 'false' for logStackTrace so this doesn't spill multi-line blocks for field validations
         Map<String, Object> errorDetails = buildErrorDetails(ex, "The request submission contains invalid formatting fields.", "VALIDATION_FAILURE", HttpStatus.BAD_REQUEST, false);
         errorDetails.put("errors", fieldErrors);
         
@@ -104,12 +103,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
-        // 💡 Pass 'true' here because severe system crashes still need a full stack trace recorded
         Map<String, Object> errorDetails = buildErrorDetails(ex, "An unexpected internal error occurred on our infrastructure.", "INTERNAL_SERVER_ERROR", HttpStatus.INTERNAL_SERVER_ERROR, true);
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    // --- REFACTORED CLEAN LOG DESIGN METHOD CONTEXT ---
+    // --- PARSER-ENRICHED SERVICE METHOD CONTEXT ---
 
     private Map<String, Object> buildErrorDetails(Throwable throwable, String message, String appCode, HttpStatus status, boolean logStackTrace) {
         HttpServletRequest request = RequestContextUtil.getCurrentHttpRequest();
@@ -133,12 +131,26 @@ public class GlobalExceptionHandler {
             MDC.put("trackingId", trackingId);
 
             if (logStackTrace) {
-                // Severe infrastructure errors get full multi-line details for developers
                 log.warn("SecurityAudit - Critical infrastructure error. Method: [{}], URL: [{}], Code: [{}], Status: [{}], ExactTime: [{}], Message: [{}]", 
                         HTTP_METHOD, URI, appCode, status.value(), exactServerTime, message, throwable);
             } else {
-                // 💡 Normal client data errors (like validation rejections) now stay clean on a single short line!
-                String causalMessage = throwable != null ? throwable.getMessage() : "No message trace provided";
+                // 💡 1. DYNAMIC STACK TRACE PARSING ENGINE
+                String causalMessage = "No message trace provided";
+                if (throwable != null) {
+                    StackTraceElement[] stack = throwable.getStackTrace();
+                    if (stack != null && stack.length > 0) {
+                        StackTraceElement origin = stack[0]; // ➔ Isolates index 0 to catch the precise breaking file line
+                        causalMessage = String.format("Origin: %s.%s(Line:%d) -> %s", 
+                                origin.getClassName(), 
+                                origin.getMethodName(), 
+                                origin.getLineNumber(), 
+                                throwable.getMessage());
+                    } else {
+                        causalMessage = throwable.getMessage();
+                    }
+                }
+
+                // 💡 2. WRITES COMPACT, ONE-LINE LOG ENRICHED WITH THE EXACT SOURCE CODE FILE ORIGIN
                 log.warn("SecurityAudit - Request processing error captured. Method: [{}], URL: [{}], Code: [{}], Status: [{}], ExactTime: [{}], Message: [{}], ErrorDetail: [{}]", 
                         HTTP_METHOD, URI, appCode, status.value(), exactServerTime, message, causalMessage);
             }
