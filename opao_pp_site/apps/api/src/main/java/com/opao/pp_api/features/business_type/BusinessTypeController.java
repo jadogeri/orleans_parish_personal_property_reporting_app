@@ -5,6 +5,8 @@ import com.opao.pp_api.features.business_type.dto.request.BusinessTypeUpdateRequ
 import com.opao.pp_api.features.business_type.dto.response.BusinessTypeResponse;
 import com.opao.pp_api.features.business_type.mapper.BusinessTypeDtoMapper;
 import com.opao.pp_api.features.business_type.model.BusinessType;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/business-types")
 @RequiredArgsConstructor
+@Tag(name = "BusinessTypes", description = "Operations related to personal property business types")
 public class BusinessTypeController {
 
     private final BusinessTypeService businessTypeService;
