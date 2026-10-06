@@ -45,7 +45,7 @@ public class BusinessTypeController {
         return ResponseEntity.ok(responses);
     }
 
-     /**
+    /**
      * GET /api/v1/business-types/{id}
      * Retrieves a specific business type by its identifier.
      */
@@ -97,10 +97,7 @@ public class BusinessTypeController {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBusinessType(@PathVariable Integer id) {
-        boolean deleted = businessTypeService.deleteBusinessType(id);
-        if (deleted) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        businessTypeService.deleteBusinessType(id);
+        return ResponseEntity.noContent().build(); // Returns HTTP 204 No Content on total success
     }
 }

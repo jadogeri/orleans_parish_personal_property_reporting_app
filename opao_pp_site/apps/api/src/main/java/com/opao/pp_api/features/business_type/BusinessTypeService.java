@@ -3,6 +3,7 @@ package com.opao.pp_api.features.business_type;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.opao.pp_api.common.exceptions.ResourceNotFoundException;
 import com.opao.pp_api.features.business_type.mapper.BusinessTypeMapper;
 import com.opao.pp_api.features.business_type.model.BusinessType;
 import com.opao.pp_api.features.business_type.model.BusinessTypeEntity;
@@ -58,11 +59,14 @@ public class BusinessTypeService {
     }
 
     @Transactional
-    public boolean deleteBusinessType(Integer id) {
-        if (businessTypeRepository.existsById(id)) {
-            businessTypeRepository.deleteById(id);
-            return true;
+    public void deleteBusinessType(Integer id) {
+        // 1. If it doesn't exist, throw immediately to trigger your secure Exception Handler
+        if (!businessTypeRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Business type record with ID " + id + " does not exist.");
         }
-        return false;
+        
+        // 2. Perform the deletion. If a foreign key restriction is violated, 
+        // Spring Data JPA throws a DataIntegrityViolationException and rolls back the transaction safely!
+        businessTypeRepository.deleteById(id);
     }
 }
