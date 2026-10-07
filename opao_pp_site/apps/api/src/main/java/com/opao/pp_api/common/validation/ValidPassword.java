@@ -5,15 +5,18 @@ import jakarta.validation.Payload;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import java.lang.annotation.*;
+import jakarta.validation.constraints.Size;
 
 import com.opao.pp_api.common.constants.ValidationRegexConstants;
+import com.opao.pp_api.common.constants.ValidationRangeConstants;
 
 @Documented
 @Constraint(validatedBy = {})
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @NotBlank(message = "Password cannot be blank")
-@Pattern(regexp = ValidationRegexConstants.PASSWORD_REGEX, message = "Password must be 8-32 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character")
+@Size(min = ValidationRangeConstants.PASSWORD_MIN_LENGTH, max = ValidationRangeConstants.PASSWORD_MAX_LENGTH, message = "Password must be between {min} and {max} characters")
+@Pattern(regexp = ValidationRegexConstants.PASSWORD_REGEX, message = "Password must be " + ValidationRangeConstants.PASSWORD_MIN_LENGTH + "-" + ValidationRangeConstants.PASSWORD_MAX_LENGTH + " characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character")
 public @interface ValidPassword {
     String message() default "Invalid password matching rule";
     Class<?>[] groups() default {};
@@ -23,7 +26,7 @@ public @interface ValidPassword {
     @Constraint(validatedBy = {})
     @Target({ElementType.FIELD, ElementType.PARAMETER})
     @Retention(RetentionPolicy.RUNTIME)
-    @Pattern(regexp = ValidationRegexConstants.PASSWORD_REGEX, message = "Password must be 8-32 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character")
+    @Pattern(regexp = ValidationRegexConstants.PASSWORD_REGEX, message = "Password must be " + ValidationRangeConstants.PASSWORD_MIN_LENGTH + "-" + ValidationRangeConstants.PASSWORD_MAX_LENGTH + " characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character")
     @interface Optional {
         String message() default "Invalid password matching rule";
         Class<?>[] groups() default {};

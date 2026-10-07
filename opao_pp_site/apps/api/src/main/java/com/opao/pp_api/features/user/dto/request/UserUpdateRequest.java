@@ -22,9 +22,6 @@ import com.opao.pp_api.common.validation.ValidForeignId;
 @AllArgsConstructor
 public class UserUpdateRequest {
 
-    @NotNull(message = "User ID is required for updates")
-    private Integer id;
-
     @ValidUsername.Optional
     @JsonProperty("userName")
     private String username;

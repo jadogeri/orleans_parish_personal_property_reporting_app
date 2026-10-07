@@ -1,8 +1,10 @@
 package com.opao.pp_api.features.user.mapper;
 
 import org.springframework.stereotype.Component;
+import com.opao.pp_api.features.user_status.constants.UserStatuses;
 import com.opao.pp_api.features.user.dto.request.UserCreateRequest;
 import com.opao.pp_api.features.user.dto.request.UserUpdateRequest;
+import com.opao.pp_api.features.user_role.constants.UserRoles;
 import com.opao.pp_api.features.user.dto.response.UserResponse;
 import com.opao.pp_api.features.user.model.User;
 
@@ -38,6 +40,8 @@ public class UserDtoMapper {
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())
                 .clearTextPassword(request.getClearTextPassword())
+                .userRoleId(request.getUserRoleId() != null ? UserRoles.fromId(request.getUserRoleId().intValue()) : null)
+                .userStatusId(request.getUserStatusId() != null ? UserStatuses.fromId(request.getUserStatusId().intValue()) : null)     
                 .build();
     }
 

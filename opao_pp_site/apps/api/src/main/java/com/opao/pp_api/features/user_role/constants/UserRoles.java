@@ -13,4 +13,17 @@ public final class UserRoles {
 
     public static final List<UserRole> ALL_ROLES = List.of(ADMINISTRATOR, SUPERUSER, TAX_PREPARER);
 
+    /**
+     * Finds a UserRole by its numeric ID.
+     * 
+     * @param id The ID to look up
+     * @return The matching UserRole
+     * @throws IllegalArgumentException if no role matches the given ID
+     */
+    public static UserRole fromId(int id) {
+        return ALL_ROLES.stream()
+                .filter(role -> role.getId() == id) // Assumes UserRole has a getId() method
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid role ID: " + id));
+    }
 }
