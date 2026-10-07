@@ -1,5 +1,7 @@
 package com.opao.pp_api.features.form;
 
+import org.springframework.data.domain.Page; // 💡 Added for pagination
+import org.springframework.data.domain.Pageable; // 💡 Added for pagination
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,30 +13,29 @@ import java.util.Optional;
 @Repository
 public interface FormRepository extends JpaRepository<FormEntity, Integer> {
 
-    // Note: Standard findAll() is already provided by JpaRepository
+    // Note: Standard Page<FormEntity> findAll(Pageable pageable) is already provided by JpaRepository
 
-    // SELECT f FROM Form f WHERE f.formId = :formId
     Optional<FormEntity> findByFormId(Integer formId);
 
-    // SELECT f FROM Form f WHERE f.title = :title
+    // ─────────────────────────────────────────────────────────────────────────
+    // 🟢 KEEP YOUR ORIGINAL LIST FILTER ENDPOINTS
+    // ─────────────────────────────────────────────────────────────────────────
     List<FormEntity> findByTitle(String title);
-
-    // SELECT f FROM Form f WHERE f.filingYear = :filingYear
     List<FormEntity> findByFilingYear(Integer filingYear);
-
-    // SELECT f FROM Form f WHERE f.billNumber = :billNumber
     List<FormEntity> findByBillNumber(String billNumber);
-
-    // SELECT f FROM Form f WHERE f.billNumber = :billNumber AND f.pin = :pin
     List<FormEntity> findByBillNumberAndPin(String billNumber, String pin);
-
-    // SELECT f FROM Form f WHERE f.billNumber = :billNumber AND f.filingYear = :filingYear
     List<FormEntity> findByBillNumberAndFilingYear(String billNumber, Integer filingYear);
-
-    // SELECT f FROM Form f WHERE f.filingYear = :filingYear AND f.billNumber = :billNumber AND f.pin = :pin
     List<FormEntity> findByFilingYearAndBillNumberAndPin(Integer filingYear, String billNumber, String pin);
-
-    // SELECT f FROM Form f WHERE f.billNumber = :billNumber AND f.pin = :pin AND f.status.name = :statusName
-    // (Spring Data handles nested object properties automatically via f.status.name -> StatusName)
     List<FormEntity> findByBillNumberAndPinAndStatusName(String billNumber, String pin, String statusName);
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ⚡ ADD OVERLOADED PAGEABLE OPTIONS BELOW
+    // ─────────────────────────────────────────────────────────────────────────
+    Page<FormEntity> findByTitle(String title, Pageable pageable);
+    Page<FormEntity> findByFilingYear(Integer filingYear, Pageable pageable);
+    Page<FormEntity> findByBillNumber(String billNumber, Pageable pageable);
+    Page<FormEntity> findByBillNumberAndPin(String billNumber, String pin, Pageable pageable);
+    Page<FormEntity> findByBillNumberAndFilingYear(String billNumber, Integer filingYear, Pageable pageable);
+    Page<FormEntity> findByFilingYearAndBillNumberAndPin(Integer filingYear, String billNumber, String pin, Pageable pageable);
+    Page<FormEntity> findByBillNumberAndPinAndStatusName(String billNumber, String pin, String statusName, Pageable pageable);
 }

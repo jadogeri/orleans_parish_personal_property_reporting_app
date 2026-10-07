@@ -7,6 +7,9 @@ import com.opao.pp_api.features.form.dto.request.FormUpdateRequest;
 import com.opao.pp_api.features.form.dto.response.FormResponse;
 import com.opao.pp_api.features.form.mapper.FormDtoMapper;
 import com.opao.pp_api.features.form.model.Form;
+import com.opao.pp_api.types.PagedResponse;
+
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -14,10 +17,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,6 +36,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import org.springframework.data.domain.Pageable;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("FormController Standalone Unit Tests")
@@ -52,15 +56,15 @@ class FormControllerTests {
 
     @BeforeEach
     void setUp() {
-        // Register JavaTimeModule to safely handle LocalDateTime JSON serialization
         this.objectMapper.registerModule(new JavaTimeModule());
         
-        // 💡 Register the Pageable argument resolver explicitly for standalone mode
+        // Ensure Page serialization patterns map smoothly inside standalone mock instances
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller)
                 .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
-                // .setControllerAdvice(new GlobalExceptionHandler()) // Keep your exception handler advice here if applicable
+                .setViewResolvers((viewName, locale) -> new org.springframework.web.servlet.view.json.MappingJackson2JsonView(objectMapper))
                 .build();
     }
+
 
     // ─────────────────────────────────────────────────────────────────────────
     // 🟢 1. HAPPY PATH SCENARIOS
@@ -191,14 +195,34 @@ class FormControllerTests {
         @DisplayName("GET /api/v1/forms/pageable - Should return 200 OK with pageable envelope structure metrics")
         void getFormsPaged_Success() throws Exception {
             // Arrange
-            Form domain = Form.builder().id(1).title("Form A").build();
-            FormResponse response = new FormResponse(
+            Form domainForm = Form.builder()
+                    .id(1)
+                    .title("Form A")
+                    .filingYear(2026)
+                    .billNumber("BILL123")
+                    .pin("PIN99")
+                    .statusName("DRAFT")
+                    .build();
+
+            FormResponse responseFixture = new FormResponse(
                     1, "Form A", 2026, LocalDateTime.now(), "BILL123", "PIN99", 10, "DRAFT", 500, false
             );
-            Page<Form> pagedResult = new PageImpl<>(List.of(domain));
 
-            when(formService.findFormEntities(any(Pageable.class))).thenReturn(pagedResult);
-            when(dtoMapper.toResponse(domain)).thenReturn(response);
+            // 💡 FIX: Use a real PageImpl array structure populated with your domain object
+            // This prevents Jackson 3 from crashing on empty or unmodifiable type structures
+            java.util.List<Form> domainList = java.util.List.of(domainForm);
+            org.springframework.data.domain.Page<Form> realDomainPage = 
+                    new org.springframework.data.domain.PageImpl<>(domainList, org.springframework.data.domain.PageRequest.of(0, 10), 1L);
+
+            // Stub the service layer to return this real domain page
+            when(formService.findFormEntities(any(org.springframework.data.domain.Pageable.class)))
+                    .thenReturn(realDomainPage);
+
+            // 💡 FIX: Stub the dtoMapper with a lenient, type-safe fallback matcher 
+            // to catch any object instance passed through the Page stream mapping loop
+            org.mockito.Mockito.lenient()
+                    .when(dtoMapper.toResponse(any(com.opao.pp_api.features.form.model.Form.class)))
+                    .thenReturn(responseFixture);
 
             // Act & Assert
             mockMvc.perform(get("/api/v1/forms/pageable")
@@ -206,9 +230,15 @@ class FormControllerTests {
                     .param("size", "10")
                     .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
+                    // Target items inside your content array payload natively
                     .andExpect(jsonPath("$.content[0].id").value(1))
-                    .andExpect(jsonPath("$.content[0].title").value("Form A"));
+                    .andExpect(jsonPath("$.content[0].title").value("Form A"))
+                    .andExpect(jsonPath("$.content[0].filingYear").value(2026))
+                    .andExpect(jsonPath("$.content[0].statusName").value("DRAFT"))
+                    .andExpect(jsonPath("$.totalElements").value(1));
         }
+
+
 
         @Test
         @DisplayName("DELETE /api/v1/forms/{id} - Should return 204 No Content post database clean deletion")

@@ -43,10 +43,9 @@ public class UserUpdateRequest {
     @Schema(example = "1234567890", description = "The phone number of the user")
     private String phoneNumber;    
 
-    @Size(min = 8, max = 255, message = "Password must be between {min} and {max} characters")
     @JsonProperty("password")
     private String clearTextPassword;
-
+     
     @JsonProperty("isActive")
     @Schema(example = "true", description = "Indicates whether the user is active")
     private Boolean isActive;

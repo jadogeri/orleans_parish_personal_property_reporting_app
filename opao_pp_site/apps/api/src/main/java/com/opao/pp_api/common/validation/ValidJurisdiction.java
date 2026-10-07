@@ -7,13 +7,14 @@ import jakarta.validation.constraints.Pattern;
 import java.lang.annotation.*;
 
 import com.opao.pp_api.common.constants.ValidationRegexConstants;
+import com.opao.pp_api.common.constants.ValidationRangeConstants;
 
 @Documented
 @Constraint(validatedBy = {})
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @NotBlank(message = "Jurisdiction code cannot be blank")
-@Pattern(regexp = ValidationRegexConstants.JURISDICTION_REGEX, message = "Jurisdiction code must be alphanumeric and up to 6 characters long")
+@Pattern(regexp = ValidationRegexConstants.JURISDICTION_REGEX, message = "Jurisdiction code must be alphanumeric and up to " + ValidationRangeConstants.JURISDICTION_MAX_LENGTH + " characters long")
 public @interface ValidJurisdiction {
     String message() default "Invalid jurisdiction code";
     Class<?>[] groups() default {};
@@ -23,7 +24,7 @@ public @interface ValidJurisdiction {
     @Constraint(validatedBy = {})
     @Target({ElementType.FIELD, ElementType.PARAMETER})
     @Retention(RetentionPolicy.RUNTIME)
-    @Pattern(regexp = ValidationRegexConstants.JURISDICTION_REGEX, message = "Jurisdiction code must be alphanumeric and up to 6 characters long")
+    @Pattern(regexp = ValidationRegexConstants.JURISDICTION_REGEX, message = "Jurisdiction code must be alphanumeric and up to " + ValidationRangeConstants.JURISDICTION_MAX_LENGTH + " characters long")
     @interface Optional {
         String message() default "Invalid jurisdiction code";
         Class<?>[] groups() default {};

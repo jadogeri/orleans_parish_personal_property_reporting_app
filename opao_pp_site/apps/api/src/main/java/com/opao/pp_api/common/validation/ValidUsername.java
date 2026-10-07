@@ -7,13 +7,15 @@ import jakarta.validation.constraints.Pattern;
 import java.lang.annotation.*;
 
 import com.opao.pp_api.common.constants.ValidationRegexConstants;
+import com.opao.pp_api.common.constants.ValidationRangeConstants;
+
 
 @Documented
 @Constraint(validatedBy = {})
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @NotBlank(message = "Username cannot be blank")
-@Pattern(regexp = ValidationRegexConstants.USERNAME_REGEX, message = "Username must be 5-25 characters long, start with a letter, and contain only alphanumeric characters or underscores")
+@Pattern(regexp = ValidationRegexConstants.USERNAME_REGEX, message = "Username must be " + ValidationRangeConstants.USERNAME_MIN_LENGTH + "-" + ValidationRangeConstants.USERNAME_MAX_LENGTH + " characters long, start with a letter, and contain only alphanumeric characters or underscores")
 public @interface ValidUsername {
     String message() default "Invalid username";
     Class<?>[] groups() default {};
@@ -23,7 +25,7 @@ public @interface ValidUsername {
     @Constraint(validatedBy = {})
     @Target({ElementType.FIELD, ElementType.PARAMETER})
     @Retention(RetentionPolicy.RUNTIME)
-    @Pattern(regexp = ValidationRegexConstants.USERNAME_REGEX, message = "Username must be 5-25 characters long, start with a letter, and contain only alphanumeric characters or underscores")
+    @Pattern(regexp = ValidationRegexConstants.USERNAME_REGEX, message = "Username must be " + ValidationRangeConstants.USERNAME_MIN_LENGTH + "-" + ValidationRangeConstants.USERNAME_MAX_LENGTH + " characters long, start with a letter, and contain only alphanumeric characters or underscores")
     @interface Optional {
         String message() default "Invalid username";
         Class<?>[] groups() default {};
