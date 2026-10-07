@@ -55,11 +55,13 @@ public class UserCreateRequest {
     private String clearTextPassword;
 
     @NotNull(message = "User role reference is required")
+    @Schema(example = "1", description = "The ID of the role assigned to the user")
     @ValidForeignId
     @JsonProperty("roleId")
     private Integer userRoleId;   
 
     @NotNull(message = "User status reference is required")
+    @Schema(example = "1", description = "The ID of the status assigned to the user")
     @ValidForeignId
     @JsonProperty("statusId")
     private Integer userStatusId; 
