@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("BusinessTypeService Unit Tests")
-class BusinessTypeServiceTest {
+class BusinessTypeServiceTests {
 
     @Mock
     private BusinessTypeRepository repository;

@@ -8,8 +8,6 @@ package com.opao.pp_api.features.business_type;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opao.pp_api.common.exceptions.GlobalExceptionHandler;
-import com.opao.pp_api.features.business_type.dto.request.BusinessTypeCreateRequest;
-import com.opao.pp_api.features.business_type.dto.request.BusinessTypeUpdateRequest;
 import com.opao.pp_api.features.business_type.dto.response.BusinessTypeResponse;
 import com.opao.pp_api.features.business_type.mapper.BusinessTypeDtoMapper;
 import com.opao.pp_api.features.business_type.model.BusinessType;
@@ -25,11 +23,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -79,9 +75,9 @@ class BusinessTypeControllerTests {
             mockMvc.perform(get("/api/v1/business-types")
                     .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$[0].businessTypeId").value(1))
-                    .andExpect(jsonPath("$[0].businessCode").value(10))
-                    .andExpect(jsonPath("$[0].businessDescription").value("Retail"));
+                    .andExpect(jsonPath("$[0].id").value(1))
+                    .andExpect(jsonPath("$[0].code").value(10))
+                    .andExpect(jsonPath("$[0].description").value("Retail"));
         }
 
         @Test
@@ -98,9 +94,9 @@ class BusinessTypeControllerTests {
             mockMvc.perform(get("/api/v1/business-types/1")
                     .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.businessTypeId").value(1))
-                    .andExpect(jsonPath("$.businessCode").value(10))
-                    .andExpect(jsonPath("$.businessDescription").value("Retail"));
+                    .andExpect(jsonPath("$.id").value(1))
+                    .andExpect(jsonPath("$.code").value(10))
+                    .andExpect(jsonPath("$.description").value("Retail"));
         }
 
         @Test
