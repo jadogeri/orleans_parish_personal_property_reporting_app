@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-baseline-tables
+      author: joseph.adogeri
+      preConditions:
+        - onFail: MARK_RAN # 💡 TRICK: If tables already exist, mark this changeSet as "already run" so it doesn't crash!
+        - not:
+            - tableExists:
+                tableName: business_type
+      changes:
+        - createTable:
+            tableName: business_type
+            columns:
+              - column:
+                  name: business_code
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

@@ -16,16 +16,16 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # JPA / Hibernate Configurations
-#   jpa:
-#     show-sql: true
-#     hibernate:
-#       ddl-auto: update
   jpa:
+    show-sql: true
     hibernate:
-      ddl-auto: validate
-  flyway:
+      ddl-auto: validate # 💡 Liquibase handles database structures now; Hibernate just checks them
+
+  # Liquibase Migration Configuration
+  liquibase:
     enabled: true
-    baseline-on-migrate: true
+    change-log: "classpath:db/changelog/db.changelog-master.yaml" # 💡 Master tracking pipeline file
+    drop-first: false # 💡 Defensive guard: keeps live tables intact instead of wiping them on reboot
 
 server:
   port: 9000
