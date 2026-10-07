@@ -4,7 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "mvnw spring-boot:run",
-    "build": "mvnw clean package -DskipTests",
-    "test": "mvnw test"
+    "build": "mvnw clean package -DskipTests",    
+    "─── TESTING SCRIPTS ───": "────────────────────────────────────────",
+    "test": "mvnw test",
+    "test:cov": "mvnw jacoco:report",
+    "test:debug": "mvnw test -Dmaven.surefire.debug",
+    "test:e2e": "mvnw verify -P integration-test",
+    "migration:show": "mvnw liquibase:status",
+    "migration:run": "mvnw liquibase:update",
+    "migration:revert": "mvnw liquibase:rollback -Dliquibase.rollbackCount=1",    
+    "─── SCHEMA MAINTENANCE ───": "─────────────────────────────────────",
+    "schema:drop": "mvnw liquibase:dropAll",
+    "schema:sync": "mvnw compile liquibase:diff",
+    "schema:log": "mvnw liquibase:updateSQL",
+    "─── SEED SCRIPTS ───": "───────────────────────────────────────────",
+    "seeds": "mvnw spring-boot:run -Dspring-boot.run.arguments='--seed'"
   }
 }

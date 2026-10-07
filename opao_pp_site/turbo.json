@@ -1,5 +1,5 @@
 {
-  "$schema": "https://turborepo.dev/schema.json",
+  "$schema": "https://turbo.build",
   "ui": "tui",
   "tasks": {
     "build": {
@@ -21,6 +21,29 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "migration:show": {
+      "cache": false
+    },
+    "migration:run": {
+      "cache": false
+    },
+    "migration:revert": {
+      "cache": false
+    },
+    "schema:drop": {
+      "cache": false
+    },
+    "schema:sync": {
+      "cache": false,
+      "inputs": ["src/main/java/**", "pom.xml"]
+    },
+    "schema:log": {
+      "cache": false
+    },
+    "seeds": {
+      "cache": false,
+      "inputs": ["src/main/resources/seed-data/**"]
     }
   }
 }

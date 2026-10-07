@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://apache.org" xmlns:xsi="http://w3.org"
+         xsi:schemaLocation="http://apache.org https://apache.org">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -11,8 +11,8 @@
     <groupId>com.opao</groupId>
     <artifactId>pp_api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name/>
-    <description/>
+    <name>pp_api</name>
+    <description>OPAO Personal Property API</description>
     <url/>
     <licenses>
         <license/>
@@ -31,14 +31,14 @@
         <spring-boot-admin.version>4.1.2</spring-boot-admin.version>
     </properties>
     <dependencies>
-        <!-- 💡 THE MASTER TESTING STARTER -->
+        <!-- THE MASTER TESTING STARTER -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- 💡 FIXED: Explicit slice configuration targets to resolve WebMvcTest and MockitoBean across monorepos -->
+        <!-- FIXED: Explicit slice configuration targets to resolve WebMvcTest and MockitoBean across monorepos -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test-autoconfigure</artifactId>
@@ -80,6 +80,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>
@@ -102,8 +103,8 @@
             <version>1.6.3</version>
         </dependency>
         <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -119,12 +120,37 @@
     </dependencyManagement>
 
     <build>
+        <!-- 💡 LINK THE SHARED TURBOREPO MONOREPO DATA PACK DIRECTLY TO THE CLASSPATH ROOT -->
+        <!-- 💡 LINK YOUR TRUE TURBOREPO STATIC-DATA WORKSPACE PATH TO THE CLASSPATH -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <!-- 💡 FIX: Updated directory path to point exactly to your static-data/seeds folder -->
+                <directory>../../packages/static-data/seeds</directory>
+                <targetPath>static-data</targetPath>
+                <includes>
+                    <include>*.csv</include>
+                </includes>
+            </resource>
+        </resources>
+
+
         <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.27.0</version>
+                <configuration>
+                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+                    <changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFile>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -149,7 +175,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
