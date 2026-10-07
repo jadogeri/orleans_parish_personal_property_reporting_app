@@ -72,7 +72,7 @@ public class UserController {
     @Operation(summary = "Provisions a brand-new user application registry account profile")
     public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserCreateRequest request) {
         User domainModel = dtoMapper.toDomain(request);
-        User createdDomain = userService.createUser(domainModel);
+        User createdDomain = userService.create(domainModel);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(dtoMapper.toResponse(createdDomain));
     }

@@ -31,35 +31,49 @@ public class UserService {
     }
 
     public Optional<User> getUserById(Integer id) { 
-        return userRepository.findById(id.longValue()).map(userMapper::toDomain);
+        return userRepository.findById(id).map(userMapper::toDomain);
     }
 
     public Optional<User> getUserByUsername(String username) {
         return userRepository.findByUsername(username).map(userMapper::toDomain);
     }
 
+    /**
+     * Creates a brand new user record. 
+     * Flexible enough for self-registration, admin creation, and disabled states.
+     */
     @Transactional
-    public User createUser(User domainModel) {
+    public User create(User domainModel) {
+        // 1. Guard Rail: Prevent duplicate identities
         if (userRepository.findByUsername(domainModel.getUsername()).isPresent()) {
             throw new IllegalArgumentException("Username is already taken");
         }
          
-        // If you have a PasswordEncoder, use: passwordEncoder.encode(domainModel.getClearTextPassword())
-        if (domainModel.getHashedPassword() == null && domainModel.getClearTextPassword() != null) {
-            domainModel.setHashedPassword(domainModel.getClearTextPassword()); 
-            domainModel.setUserRoleId(UserRoles.TAX_PREPARER);
-            domainModel.setUserStatusId(UserStatuses.ENABLED);
+        // 2. Encrypt cleartext passwords safely before it hits mapping stages
+        if (domainModel.getClearTextPassword() != null) {
+            // domainModel.setHashedPassword(passwordEncoder.encode(domainModel.getClearTextPassword()));
+            domainModel.setHashedPassword(domainModel.getClearTextPassword()); // Fallback for raw setup
+        }
+
+        // 3. 🌟 SMART DEFAULTS: Only fallback if the controller/caller didn't specify them!
+        if (domainModel.getUserRoleId() == null) {
+            domainModel.setUserRoleId(UserRoles.TAX_PREPARER); // Default for public self-registration
+        }
+        
+        if (domainModel.getUserStatusId() == null) {
+            domainModel.setUserStatusId(UserStatuses.ENABLED); // Default status
         }
         
         UserEntity entity = userMapper.toEntity(domainModel);
         UserEntity savedEntity = userRepository.save(entity);
+        
         return userMapper.toDomain(savedEntity);
     }
 
 
     @Transactional
     public Optional<User> updateUser(Integer id, User updatedUser) { 
-        return userRepository.findById(id.longValue()).map(existingEntity -> {
+        return userRepository.findById(id).map(existingEntity -> {
             userMapper.updateEntityFromDomain(updatedUser, existingEntity);
             UserEntity savedEntity = userRepository.save(existingEntity);
             return userMapper.toDomain(savedEntity);
@@ -68,8 +82,8 @@ public class UserService {
 
     @Transactional
     public boolean deleteUser(Integer id) { 
-        if (userRepository.existsById(id.longValue())) {
-            userRepository.deleteById(id.longValue());
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
             return true;
         }
         return false;

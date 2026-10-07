@@ -16,4 +16,6 @@ public interface FormStatusRepository extends JpaRepository<FormStatusEntity, In
 
     // SELECT s FROM Status s WHERE s.name = :name
     Optional<FormStatusEntity> findByName(String name);
+
+    
 }

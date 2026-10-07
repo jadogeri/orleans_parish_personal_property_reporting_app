@@ -3,11 +3,10 @@ package com.opao.pp_api.features.form;
 import com.opao.pp_api.features.form.mapper.FormMapper;
 import com.opao.pp_api.features.form.model.Form;
 import com.opao.pp_api.features.form.model.FormEntity;
-import com.opao.pp_api.features.form_status.model.FormStatusEntity;
-import com.opao.pp_api.features.form_type.model.FormTypeEntity;
-import com.opao.pp_api.features.user.model.UserEntity;
+import com.opao.pp_api.features.form_status.FormStatusRepository; // Ensure these repositories exist
+import com.opao.pp_api.features.form_type.FormTypeRepository;
+import com.opao.pp_api.features.user.UserRepository;
 
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -26,11 +25,15 @@ public class FormService {
 
     private final FormRepository formRepository;
     private final FormMapper formMapper;
-    private final EntityManager entityManager;
+    
+    // 🆕 Inject standard repositories to handle lightweight proxy lookups
+    private final FormTypeRepository formTypeRepository;
+    private final FormStatusRepository formStatusRepository;
+    private final UserRepository userRepository;
 
     /**
      * Creates a brand-new Form record.
-     * Manages explicit proxy linkages for structural parents using entity reference lookups.
+     * Manages explicit proxy linkages for structural parents using repository references.
      */
     @Transactional
     public Form create(Form domain) {
@@ -141,24 +144,17 @@ public class FormService {
      */
     private void resolveRelationships(Form domain, FormEntity entity) {
         if (domain.getFormTypeId() != null) {
-            entity.setFormType(entityManager.getReference(
-                FormTypeEntity.class, 
-                domain.getFormTypeId()
-            ));
+            // Natively fetches an un-hydrated proxy record reference safely!
+            entity.setFormType(formTypeRepository.getReferenceById(domain.getFormTypeId()));
         }
         
         if (domain.getStatusName() != null) {
-            entity.setStatus(entityManager.getReference(
-                FormStatusEntity.class, 
-                domain.getStatusName()
-            ));
+            entity.setStatus(formStatusRepository.getReferenceById(domain.getId()));
         }
 
         if (domain.getUserId() != null) {
-            entity.setUserId(entityManager.getReference(
-                UserEntity.class, 
-                domain.getUserId()
-            ));
+            // Updated mapping reference to handle target proxy identities
+            entity.setUserId(userRepository.getReferenceById(domain.getId()));
         }
     }
 }

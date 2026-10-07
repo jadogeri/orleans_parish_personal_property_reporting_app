@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
     // Note: Standard findAll() is already provided by JpaRepository
 
     // SELECT u FROM User u WHERE u.userId = :userId
-    Optional<UserEntity> findByUserId(Long userId);
+    Optional<UserEntity> findByUserId(Integer userId);
 
     // SELECT u FROM User u WHERE u.username = :username
     Optional<UserEntity> findByUsername(String username);

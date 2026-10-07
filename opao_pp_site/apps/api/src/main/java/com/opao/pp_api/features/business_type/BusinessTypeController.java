@@ -63,13 +63,11 @@ public class BusinessTypeController {
      * Provisions a brand new business type registration code.
      */
     @PostMapping
-    public ResponseEntity<BusinessTypeResponse> createBusinessType(
-            @Valid @RequestBody BusinessTypeCreateRequest request) {
+    public ResponseEntity<BusinessTypeResponse> createBusinessType( @Valid @RequestBody BusinessTypeCreateRequest request) {
         
         BusinessType domainModel = dtoMapper.toDomain(request);
         BusinessType createdDomain = businessTypeService.createBusinessType(domainModel);
         
-        // FIXED: Corrected functional method mapping invocation syntax
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(dtoMapper.toResponse(createdDomain));
     }
