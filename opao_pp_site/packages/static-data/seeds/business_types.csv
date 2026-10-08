@@ -1,56 +1,56 @@
 BUSINESS_TYPE_ID,BUSINESS_CODE,BUSINESS_DESCRIPTION
 1,111110,Soybean Farming
-2,112111,Beef Cattle Ranching and Farming
+2,112111,Beef Cattle Ranching and 
 3,114111,Finfish Fishing
-4,211120,Crude Petroleum Extraction
-5,212111,Bituminous Coal Surface Mining
-6,221111,Hydroelectric Power Generation
+4,211120,Crude Petroleum Extractio
+5,212111,Bituminous Coal Surface M
+6,221111,Hydroelectric Power Gener
 7,221210,Natural Gas Distribution
-8,221310,Water Supply and Irrigation Systems
-9,236115,New Single-Family Housing Construction
-10,237310,"Highway, Street, and Bridge Construction"
-11,311119,Other Animal Food Manufacturing
+8,221310,Water Supply and Irrigati
+9,236115,New Single-Family Housing
+10,237310,"Highway, Street, and Brid"
+11,311119,Other Animal Food Manufac
 12,311511,Fluid Milk Manufacturing
 13,311812,Commercial Bakeries
 14,312120,Breweries
 15,312140,Distilleries
-16,313110,"Fiber, Yarn, and Thread Mills"
+16,313110,"Fiber, Yarn, and Thread M"
 17,314110,Carpet and Rug Mills
-18,315220,Men's and Boys' Cut and Sew Apparel Manufacturing
+18,315220,Men's and Boys' Cut and S
 19,316210,Footwear Manufacturing
 20,321113,Sawmills
 21,322110,Pulp Mills
-22,322211,Corrugated and Solid Fiber Box Manufacturing
-23,323111,Commercial Printing (except Screen and Books)
+22,322211,Corrugated and Solid Fibe
+23,323111,Commercial Printing (exce
 24,324110,Petroleum Refineries
-25,325180,Other Basic Inorganic Chemical Manufacturing
-26,325412,Pharmaceutical Preparation Manufacturing
-27,325611,Soap and Other Detergent Manufacturing
-28,326111,Plastics Bag and Pouch Manufacturing
+25,325180,Other Basic Inorganic Che
+26,325412,Pharmaceutical Preparatio
+27,325611,Soap and Other Detergent 
+28,326111,Plastics Bag and Pouch Ma
 29,327211,Flat Glass Manufacturing
-30,331110,Iron and Steel Mills and Ferroalloy Manufacturing
-31,332215,Hand and Edge Tool Manufacturing
-32,333111,Farm Machinery and Equipment Manufacturing
-33,334111,Electronic Computer Manufacturing
-34,334220,Radio and Television Broadcasting and Wireless Communications Equipment
-35,334510,Electromedical and Electrotherapeutic Apparatus Manufacturing
-36,335220,Major Household Appliance Manufacturing
+30,331110,Iron and Steel Mills and 
+31,332215,Hand and Edge Tool Manufa
+32,333111,Farm Machinery and Equipm
+33,334111,Electronic Computer Manuf
+34,334220,Radio and Television Broa
+35,334510,Electromedical and Electr
+36,335220,Major Household Appliance
 37,336111,Automobile Manufacturing
 38,336411,Aircraft Manufacturing
-39,337122,Nonupholstered Wood Household Furniture Manufacturing
-40,339112,Surgical and Medical Instrument Manufacturing
-41,339920,Sporting and Athletic Goods Manufacturing
-42,423110,Automobile and Other Motor Vehicle Merchant Wholesalers
-43,423430,Computer and Computer Peripheral Equipment Merchant Wholesalers
-44,423450,"Medical, Dental, and Hospital Equipment Merchant Wholesalers"
-45,424410,General Line Grocery Merchant Wholesalers
-46,424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers
+39,337122,Nonupholstered Wood House
+40,339112,Surgical and Medical Inst
+41,339920,Sporting and Athletic Goo
+42,423110,Automobile and Other Moto
+43,423430,Computer and Computer Per
+44,423450,"Medical, Dental, and Hosp"
+45,424410,General Line Grocery Merc
+46,424820,Wine and Distilled Alcoho
 47,441110,New Car Dealers
 48,441222,Boat Dealers
 49,443142,Electronics Stores
 50,444110,Home Centers
-51,445110,Supermarkets and Other Grocery Stores
-52,446110,Pharmacies and Drug Stores
+51,445110,Supermarkets and Other Gr
+52,446110,Pharmacies and Drug Store
 53,448110,Men's Clothing Stores
 54,448140,Family Clothing Stores
 55,448210,Shoe Stores
@@ -58,44 +58,44 @@ BUSINESS_TYPE_ID,BUSINESS_CODE,BUSINESS_DESCRIPTION
 57,451211,Book Stores
 58,452111,Department Stores
 59,453110,Florists
-60,453210,Office Supplies and Stationery Stores
-61,481111,Scheduled Passenger Air Transportation
+60,453210,Office Supplies and Stati
+61,481111,Scheduled Passenger Air T
 62,482111,Line-Haul Railroads
-63,483111,Deep Sea Freight Transportation
-64,484110,"General Freight Trucking, Local"
-65,484121,"General Freight Trucking, Long-Distance, Truckload"
-66,485111,Mixed Mode Transit Systems
+63,483111,Deep Sea Freight Transpor
+64,484110,"General Freight Trucking,"
+65,484121,"General Freight Trucking,"
+66,485111,Mixed Mode Transit System
 67,488119,Other Airport Operations
-68,492110,Couriers and Express Delivery Services
-69,493110,General Warehousing and Storage
+68,492110,Couriers and Express Deli
+69,493110,General Warehousing and S
 70,511110,Newspaper Publishers
 71,511210,Software Publishers
-72,512110,Motion Picture and Video Production
+72,512110,Motion Picture and Video 
 73,515112,Radio Stations
-74,517311,Wired Telecommunications Carriers
-75,518210,"Data Processing, Hosting, and Related Services"
-76,519130,Internet Publishing and Broadcasting and Web Search Portals
+74,517311,Wired Telecommunications 
+75,518210,"Data Processing, Hosting,"
+76,519130,Internet Publishing and B
 77,522110,Commercial Banking
 78,522291,Consumer Lending
-79,523110,Investment Banking and Securities Dealing
-80,524113,Direct Life Insurance Carriers
-81,524114,Direct Health and Medical Insurance Carriers
-82,531110,Lessors of Residential Buildings and Dwellings
-83,531210,Offices of Real Estate Agents and Brokers
+79,523110,Investment Banking and Se
+80,524113,Direct Life Insurance Car
+81,524114,Direct Health and Medical
+82,531110,Lessors of Residential Bu
+83,531210,Offices of Real Estate Ag
 84,532111,Passenger Car Rental
 85,541110,Offices of Lawyers
-86,541211,Offices of Certified Public Accountants
+86,541211,Offices of Certified Publ
 87,541310,Architectural Services
 88,541330,Engineering Services
-89,541511,Custom Computer Programming Services
-90,541512,Computer Systems Design Services
+89,541511,Custom Computer Programmi
+90,541512,Computer Systems Design S
 91,541810,Advertising Agencies
-92,541921,"Photography Studios, Portrait"
-93,561110,Office Administrative Services
+92,541921,"Photography Studios, Port"
+93,561110,Office Administrative Ser
 94,561320,Temporary Help Services
-95,561439,Other Business Service Centers (including Copy Shops)
-96,561612,Security Guards and Patrol Services
+95,561439,Other Business Service Ce
+96,561612,Security Guards and Patro
 97,561720,Janitorial Services
 98,561730,Landscaping Services
 99,562111,Solid Waste Collection
-100,611110,Elementary and Secondary Schools
+100,611110,Elementary and Secondary 

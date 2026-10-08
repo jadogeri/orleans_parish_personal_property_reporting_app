@@ -20,26 +20,40 @@
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": ["DB_USERNAME", "DB_PASSWORD"],
+      "passThroughEnv": ["DB_USERNAME", "DB_PASSWORD"]
     },
     "migration:show": {
-      "cache": false
+      "cache": false,
+      "env": ["DB_USERNAME", "DB_PASSWORD"],
+      "passThroughEnv": ["DB_USERNAME", "DB_PASSWORD"]
     },
     "migration:run": {
-      "cache": false
+      "cache": false,
+      "env": ["DB_USERNAME", "DB_PASSWORD"],
+      "passThroughEnv": ["DB_USERNAME", "DB_PASSWORD"]
     },
     "migration:revert": {
-      "cache": false
+      "cache": false,
+      "env": ["DB_USERNAME", "DB_PASSWORD"],
+      "passThroughEnv": ["DB_USERNAME", "DB_PASSWORD"]
     },
     "schema:drop": {
-      "cache": false
+      "cache": false,
+      "env": ["DB_USERNAME", "DB_PASSWORD"],
+      "passThroughEnv": ["DB_USERNAME", "DB_PASSWORD"]
     },
     "schema:sync": {
       "cache": false,
-      "inputs": ["src/main/java/**", "pom.xml"]
+      "inputs": ["src/main/java/**", "pom.xml"],
+      "env": ["DB_USERNAME", "DB_PASSWORD"],
+      "passThroughEnv": ["DB_USERNAME", "DB_PASSWORD"]
     },
     "schema:log": {
-      "cache": false
+      "cache": false,
+      "env": ["DB_USERNAME", "DB_PASSWORD"],
+      "passThroughEnv": ["DB_USERNAME", "DB_PASSWORD"]
     },
     "seeds": {
       "cache": false,

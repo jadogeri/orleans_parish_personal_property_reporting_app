@@ -1,24 +1,13 @@
 databaseChangeLog:
+  - include:
+      file: db/changelog/migrations/001_create_tables.sql
+
+  # 💡 FIX: Load the shared Monorepo package CSV records natively without a broken .sql wrapper!
   - changeSet:
-      id: 1-baseline-tables
-      author: joseph.adogeri
-      preConditions:
-        - onFail: MARK_RAN # 💡 TRICK: If tables already exist, mark this changeSet as "already run" so it doesn't crash!
-        - not:
-            - tableExists:
-                tableName: business_type
+      id: seed-business-types-from-csv-v1
+      author: opao-team
       changes:
-        - createTable:
+        - loadData:
             tableName: business_type
-            columns:
-              - column:
-                  name: business_code
-                  type: int
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: description
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
+            file: static-data/business_types.csv
+            separator: ","

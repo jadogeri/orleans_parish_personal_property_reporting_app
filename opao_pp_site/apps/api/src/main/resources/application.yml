@@ -1,7 +1,8 @@
-# Tell Spring Boot to read your local .env file explicitly
 spring:
+  # 💡 FORCE SPRING BOOT TO READ LOCAL ENV PARAMETERS IN SANDBOX DEV
   config:
     import: "optional:file:.env[.properties]"
+    
   application:
     name: pp_api
   docker:
@@ -19,13 +20,13 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: validate # 💡 Liquibase handles database structures now; Hibernate just checks them
+      ddl-auto: validate
 
   # Liquibase Migration Configuration
   liquibase:
     enabled: true
-    change-log: "classpath:db/changelog/db.changelog-master.yaml" # 💡 Master tracking pipeline file
-    drop-first: false # 💡 Defensive guard: keeps live tables intact instead of wiping them on reboot
+    change-log: "classpath:db/changelog/db.changelog-master.yaml"
+    drop-first: false
 
 server:
   port: 9000
