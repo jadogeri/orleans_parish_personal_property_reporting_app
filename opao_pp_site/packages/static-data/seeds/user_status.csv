@@ -1,0 +1,4 @@
+user_status_id,name
+1,Disabled
+2,Enabled
+3,Locked

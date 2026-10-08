@@ -1,0 +1,4 @@
+user_role_id,description,name
+1,Full system access.,Admin
+2,Standard access.,User
+3,Restricted accesss.,Guest

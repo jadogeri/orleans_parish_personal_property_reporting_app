@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/seeds/seed_business_types.yaml
+  - include:
+      file: db/changelog/seeds/seed_roles.yaml
+  - include:
+      file: db/changelog/seeds/seed_user_status.yaml
+  - include:
+      file: db/changelog/seeds/seed_form_status.yaml
+  - include:
+      file: db/changelog/seeds/seed_property_asset.yaml

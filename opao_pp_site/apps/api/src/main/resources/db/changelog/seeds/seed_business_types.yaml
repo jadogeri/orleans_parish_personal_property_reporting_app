@@ -1,13 +1,11 @@
 databaseChangeLog:
-  - include:
-      file: db/changelog/migrations/001_create_tables.sql
-
-  # 💡 FIX: Load the shared Monorepo package CSV records natively without a broken .sql wrapper!
   - changeSet:
       id: seed-business-types-from-csv-v1
       author: opao-team
+      runOnChange: true # 🔄 Tells Liquibase to re-evaluate if the CSV changes
       changes:
-        - loadData:
+        - loadUpdateData: # 👈 Use this to prevent errors when it re-evaluates
             tableName: business_type
             file: static-data/business_types.csv
             separator: ","
+            primaryKey: "business_code"

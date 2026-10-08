@@ -157,7 +157,7 @@
                 <version>5.0.3</version>
                 <configuration>
                     <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                    <changeLogFile>db/changelog/db.changelog-master.yaml</changeLogFile>
+                    <changeLogFile>db/changelog/master.yaml</changeLogFile>
                     <username>${env.DB_USERNAME}</username>
                     <password>${env.DB_PASSWORD}</password>
                 </configuration>

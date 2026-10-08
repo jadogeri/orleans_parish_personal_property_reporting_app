@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: seed-property-asset-from-csv-v1
+      author: opao-team
+      runOnChange: true # 🔄 Tells Liquibase to re-evaluate if the CSV changes
+      changes:
+        - loadUpdateData: # 👈 Use this to prevent errors when it re-evaluates
+            tableName: property_asset
+            file: static-data/property_asset.csv
+            separator: ","
+            primaryKey: "section_number,category,pptype"
